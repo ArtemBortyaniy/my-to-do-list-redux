@@ -20,6 +20,10 @@ export const TaskList = () => {
   const statusFilter = useFiltersSelector();
   const visibleTasks = getVisibleTasks(tasks, statusFilter);
 
+  if (!visibleTasks.length) {
+    return <p>No tasks to display.</p>;
+  }
+
   return (
     <ul className={css.list}>
       {visibleTasks.map(task => (

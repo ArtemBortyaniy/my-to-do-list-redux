@@ -1,21 +1,21 @@
 import { statusFilters } from './constants';
 import { combineReducers } from 'redux';
 
-const tasksInitialState = [
-  { id: 0, text: 'Learn HTML and CSS', completed: true },
-  { id: 1, text: 'Get good at JavaScript', completed: true },
-  { id: 2, text: 'Master React', completed: false },
-  { id: 3, text: 'Discover Redux', completed: false },
-  { id: 4, text: 'Build amazing apps', completed: false },
-];
+// const tasksInitialState = [
+//   { id: 0, text: 'Learn HTML and CSS', completed: true },
+//   { id: 1, text: 'Get good at JavaScript', completed: true },
+//   { id: 2, text: 'Master React', completed: false },
+//   { id: 3, text: 'Discover Redux', completed: false },
+//   { id: 4, text: 'Build amazing apps', completed: false },
+// ];
 
-const tasksReducer = (state = tasksInitialState, action) => {
+const tasksReducer = (state = '', action) => {
   switch (action.type) {
-    case 'tasks/addTask':
+    case 'task/addTask':
       return [...state, action.payload];
-    case 'tasks/deleteTask':
+    case 'task/deleteTask':
       return state.filter(task => task.id !== action.payload);
-    case 'tasks/toggleCompleted':
+    case 'task/toggleCompleted':
       return state.map(task => {
         if (task.id !== action.payload) {
           return task;
@@ -48,16 +48,29 @@ export const rootReducer = combineReducers({
   filters: filtersReducer,
 });
 
-// export const rootReducer = (state = initialState, action) => {
+// const tasksInitialState = {
+//   tasks: [
+//     { id: 0, text: 'Learn HTML and CSS', completed: true },
+//     { id: 1, text: 'Get good at JavaScript', completed: true },
+//     { id: 2, text: 'Master React', completed: false },
+//     { id: 3, text: 'Discover Redux', completed: false },
+//     { id: 4, text: 'Build amazing apps', completed: false },
+//   ],
+//   filters: {
+//     state: statusFilters.all,
+//   },
+// };
+
+// export const rootReducer = (state = tasksInitialState, action) => {
 //   switch (action.type) {
-//     case 'tasks/addTask': {
+//     case 'task/addTask': {
 //       return {
 //         ...state,
 //         tasks: [...state.tasks, action.payload],
 //       };
 //     }
 
-//     case 'taks/deleteTask': {
+//     case 'task/deleteTask': {
 //       return {
 //         ...state,
 //         tasks: state.tasks.filter(task => task.id !== action.payload),
